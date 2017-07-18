@@ -24,7 +24,6 @@ public class ServerImpl implements Runnable, Server {
 		this.port = port;
 	}
 	
-	@Override
 	public void run() {
 		Socket clientSocket = null;
 		try {
