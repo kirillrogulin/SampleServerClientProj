@@ -14,7 +14,13 @@ public class ServerImpl implements Runnable, Server {
 	
 	static {
 		lg = Logger.getLogger(ServerImpl.class.getName());
-		lg.setLevel(Level.INFO);
+		lg.setLevel(Level.ALL);
+		try {
+			LogManager.getLogManager()
+				.readConfiguration(ServerImpl.class.getResourceAsStream("resources\\logger.properties"));
+		} catch (IOException e) {
+			System.err.println("No logger config. Log only to console!");
+		}
 	}
 	
 	private ServerImpl() {
