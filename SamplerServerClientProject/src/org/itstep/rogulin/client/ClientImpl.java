@@ -27,20 +27,17 @@ public class ClientImpl implements Client {
 	}
 	
 	public void createSenderToServer() {
-		String line;
+		String line = "";
 		this.inFromConsole = new BufferedReader(new InputStreamReader(System.in));
 		try {
 			this.outToServer = new BufferedWriter(new OutputStreamWriter(this.socket.getOutputStream()));
-			while(true) {
+			while(!line.toUpperCase().equals("Q")) {
 				line = inFromConsole.readLine();
-				outToServer.write(line);
+				outToServer.write(line + "\n");
 				outToServer.flush();
-				if(socket.isClosed() || socket.isConnected()) {
-					break;
-				}
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		} finally {
 			try {
 				socket.close();

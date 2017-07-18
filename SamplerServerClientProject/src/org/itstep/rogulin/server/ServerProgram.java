@@ -6,5 +6,4 @@ public class ServerProgram {
 		ServerImpl server = ServerImpl.createServer(9999);
 		new Thread(server).start();
 	}
-
 }
